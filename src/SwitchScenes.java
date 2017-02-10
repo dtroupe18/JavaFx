@@ -25,27 +25,33 @@ public class SwitchScenes extends Application {
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
 
-        Label label1 = new Label("Welcome to the first scene");
-        Button button1 = new Button("Go to scene 2");
 
+        // first question to ask the user
+        Label question1 = new Label("You are in a spooky room with a door and a lamp. How will you escape?");
+
+        // choices
+        Button button1 = new Button("Door");
+        Button button2 = new Button("Lamp");
+
+        // use lambda to control what happens when the user clicks a button
         button1.setOnAction(e -> window.setScene(scene2));
 
         // Layout 1 = children are laid out in vertical column
         VBox layout1 = new VBox(20);
-        layout1.getChildren().addAll(label1, button1);
+        layout1.getChildren().addAll(question1, button1);
         scene1 = new Scene(layout1, 200, 200);
 
         // button 2
-        Button button2 = new Button("This scene sucks... go back");
+        Button button3 = new Button("This scene sucks... go back");
         button2.setOnAction(e -> window.setScene(scene1));
 
         StackPane layout2 = new StackPane();
-        layout2.getChildren().add(button2);
+        layout2.getChildren().add(button3);
         scene2 = new Scene(layout2, 600, 300);
 
         // how do we know what scence to display by default?
         window.setScene(scene1);
-        window.setTitle("Title goes here");
+        window.setTitle("Room Escape");
         window.show();
 
     }
